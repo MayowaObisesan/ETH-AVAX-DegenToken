@@ -1,7 +1,7 @@
 require("@nomicfoundation/hardhat-toolbox");
 require('dotenv').config();
 
-const FORK_FUJI = false;
+const FORK_FUJI = true;
 const FORK_MAINNET = false;
 let forkingData = undefined;
 
@@ -20,11 +20,6 @@ if (FORK_FUJI) {
 module.exports = {
   solidity: "0.8.18",
   networks: {
-    hardhat: {
-      gasPrice: 225000000000,
-      chainId: !forkingData ? 43112 : undefined, //Only specify a chainId if we are not forking
-      forking: forkingData,
-    },
     fuji: {
       url: "https://api.avax-test.network/ext/bc/C/rpc",
       gasPrice: 225000000000,
